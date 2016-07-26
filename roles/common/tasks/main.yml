@@ -1,0 +1,25 @@
+---
+- name: Clear APT packages
+  command: apt-get clean
+  args:
+    removes: "/var/cache/apt/archives/*.deb"
+
+- name: Install package dependencies
+  apt:
+    name: "{{ item }}"
+    state: latest
+    update_cache: yes
+  with_items:
+    - libxml2-utils
+    - git
+    - apache2
+    - mysql-server
+    - php5
+    - php5-mysql
+    - php5-curl
+    - php5-tidy
+    - python-apt
+    - python-mysqldb
+    - python-software-properties
+    - default-jre
+    - zip

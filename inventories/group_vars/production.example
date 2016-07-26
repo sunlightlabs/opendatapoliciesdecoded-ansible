@@ -1,0 +1,18 @@
+---
+# SSH username and private key to access remote servers.
+#ansible_ssh_user:
+#ansible_ssh_private_key_file:
+#
+# MySQL user and database to be created.
+#mysql_username:
+#mysql_password:
+#mysql_database:
+#
+# This is what the resulting Apache site configuration file will be named.
+#site_configuration_filename:
+#
+# This is value of the Apache HTTP Server "ServerName" directive.
+#web_server_name:
+#
+# Do not include a trailing slash at the end of the path.
+#web_root_path:

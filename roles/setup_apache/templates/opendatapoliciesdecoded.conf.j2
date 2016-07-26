@@ -1,0 +1,11 @@
+<VirtualHost *:80>
+    ServerName {{ web_server_name }}
+    DocumentRoot {{ web_root_path }}/htdocs/
+
+    <Directory {{ web_root_path }}/htdocs/>
+        DirectoryIndex index.php
+        Options -MultiViews
+        AllowOverride All
+        Require all granted
+    </Directory>
+</VirtualHost>

@@ -1,0 +1,6 @@
+---
+site_configuration_filename: "opendatapoliciesdecoded.conf"
+web_server_name: "localhost"
+web_root_path: "/srv/www/opendatapoliciesdecoded"
+web_user: "www-data"
+web_group: "{{ web_user }}"

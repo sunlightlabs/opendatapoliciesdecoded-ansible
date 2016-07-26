@@ -1,0 +1,21 @@
+---
+- name: Download Solr
+  get_url:
+    url: "{{ solr_mirror_url }}"
+    dest: "{{ workdir }}"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Unarchive Solr
+  unarchive:
+    src: "{{ workdir }}/solr-{{ solr_version }}.tgz"
+    dest: "{{ workdir }}"
+    owner: root
+    group: root
+    copy: no
+
+- name: Install Solr
+  command: "bash {{ workdir }}/solr-{{ solr_version }}/bin/install_solr_service.sh /tmp/solr-{{ solr_version }}.tgz"
+  args:
+    creates: "{{ workdir }}/solr-{{ solr_version }}/bin/install_solr_service.sh"

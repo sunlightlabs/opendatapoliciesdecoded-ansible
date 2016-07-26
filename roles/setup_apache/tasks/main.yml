@@ -1,0 +1,31 @@
+---
+- name: Enable Apache modules
+  apache2_module: name={{ item }}
+  with_items:
+    - env
+    - rewrite
+
+- name: Enable Apache site configurations
+  file:
+    path: "{{ web_root_path }}"
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Copy Apache site configurations
+  template:
+    src: "opendatapoliciesdecoded.conf.j2"
+    dest: "/etc/apache2/sites-available/{{ site_configuration_filename }}"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Enable Apache site configurations
+  file:
+    src: "/etc/apache2/sites-available/{{ site_configuration_filename }}"
+    dest: "/etc/apache2/sites-enabled/{{ site_configuration_filename }}"
+    state: link
+    owner: root
+    group: root
+  notify: Restart apache2
